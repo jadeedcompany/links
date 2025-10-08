@@ -5,18 +5,22 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>تابعنا — شركة الجديد</title>
   <!-- Favicon and theme color -->
-  <link rel="icon" type="image/jpg" href="logo.jpg">
+  <link rel="icon" type="image/png" href="logo.jpg">
   <link rel="shortcut icon" href="logo.jpg">
   <meta name="theme-color" content="#00352c">
+    <!-- Tell user agent this page supports both color schemes -->
+    <meta name="color-scheme" content="light dark">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <style>
     :root {
       --bg: #00352c;
       --card: #002922;
+      --card-bg: linear-gradient(180deg, rgba(0,0,0,0.32), rgba(0,0,0,0.18));
       --accent: #D4AF37;
       --text: #ffffff;
       --gradient-start: #00352c;
       --gradient-end: #002922;
+        color-scheme: light dark;
     }
     
     * {
@@ -28,6 +32,8 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', system-ui, -apple-system, Roboto, 'Helvetica Neue', Arial;
+      /* explicit background color fallback to avoid UA forced color changes on some mobile browsers */
+      background-color: var(--gradient-start);
       background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
       color: var(--text);
       display: flex;
@@ -41,7 +47,7 @@
     .card {
       width: 100%;
       max-width: 460px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+      background: var(--card-bg);
       border-radius: 24px;
       padding: 35px;
       box-shadow: 0 20px 40px rgba(0,0,0,0.5);
@@ -136,33 +142,79 @@
       border-top: 1px solid rgba(255,255,255,0.1);
     }
 
-    @media (prefers-color-scheme: light) {
+    /* Light theme only when explicitly requested via data-theme attribute */
+    html[data-theme="light"] {
+      --bg: #f6fbff;
+      --card: #fff;
+      --text: #07203a;
+      --gradient-start: #e6f7ff;
+      --gradient-end: #f6fbff;
+    }
+
+    html[data-theme="light"] .card {
+      background: rgba(255,255,255,0.8);
+      box-shadow: 0 20px 40px rgba(2,6,23,0.1);
+    }
+
+    html[data-theme="light"] .btn {
+      background: rgba(6,182,212,0.1);
+    }
+
+    html[data-theme="light"] .btn:hover {
+      background: rgba(6,182,212,0.15);
+    }
+
+    html[data-theme="light"] .icon {
+      background: rgba(6,182,212,0.15);
+    }
+
+    /* Ensure the page explicitly defines dark theme colors so UA doesn't auto-adjust */
+    @media (prefers-color-scheme: dark) {
       :root {
-        --bg: #f6fbff;
-        --card: #fff;
-        --text: #07203a;
-        --gradient-start: #e6f7ff;
-        --gradient-end: #f6fbff;
+        --bg: #00352c;
+        --card: #002922;
+        --accent: #D4AF37;
+        --text: #ffffff;
+        --gradient-start: #00352c;
+        --gradient-end: #002922;
       }
-
       .card {
-        background: rgba(255,255,255,0.8);
-        box-shadow: 0 20px 40px rgba(2,6,23,0.1);
-      }
-
-      .btn {
-        background: rgba(6,182,212,0.1);
-      }
-
-      .btn:hover {
-        background: rgba(6,182,212,0.15);
-      }
-
-      .icon {
-        background: rgba(6,182,212,0.15);
+        background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
       }
     }
+    /* Allow forcing theme via html[data-theme] to improve reliability on some mobile browsers */
+    html[data-theme="light"] {
+      --bg: #f6fbff;
+      --card: #ffffff;
+      --text: #07203a;
+      --gradient-start: #e6f7ff;
+      --gradient-end: #f6fbff;
+    }
+    html[data-theme="dark"] {
+      --bg: #00352c;
+      --card: #002922;
+      --text: #ffffff;
+      --gradient-start: #00352c;
+      --gradient-end: #002922;
+    }
   </style>
+  <script>
+    // Apply a data-theme attribute early so CSS picks correct variables before render
+    (function() {
+      try {
+        // Force dark theme regardless of system setting
+        var theme = 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+        // update theme-color meta for mobile UI (status bar color)
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) {
+          meta.setAttribute('content', '#00352c');
+        }
+      } catch (e) {
+        // ignore
+      }
+    })();
+  </script>
 </head>
 <body>
   <div class="card" dir="rtl" lang="ar">
