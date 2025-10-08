@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="ar">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>تابعنا — شركة الجديد</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    :root {
+      --bg: #00352c;
+      --card: #002922;
+      --accent: #D4AF37;
+      --text: #ffffff;
+      --gradient-start: #00352c;
+      --gradient-end: #002922;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', system-ui, -apple-system, Roboto, 'Helvetica Neue', Arial;
+      background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 460px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+      border-radius: 24px;
+      padding: 35px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      text-align: center;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(212,175,55,0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .logo {
+      width: 240px;
+      height: 70px;
+      margin: 0 auto 20px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.02);
+    }
+
+    h1 {
+      font-size: 24px;
+      margin: 10px 0 20px;
+      background: linear-gradient(to right, var(--accent), #0891b2);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+    }
+
+    p {
+      margin: 0 0 25px;
+      color: rgba(230,238,246,0.9);
+      font-size: 16px;
+    }
+
+    .links {
+      display: grid;
+      gap: 12px;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 16px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.05);
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .btn:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateX(-5px);
+      border-color: var(--accent);
+    }
+
+    .icon {
+      width: 36px;
+      height: 36px;
+      flex: 0 0 36px;
+      display: inline-grid;
+      place-items: center;
+      background: rgba(255,255,255,0.08);
+      border-radius: 10px;
+      font-size: 18px;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover .icon {
+      background: var(--accent);
+      color: var(--card);
+      border: 1px solid var(--accent);
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 14px;
+      color: rgba(230,238,246,0.7);
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f6fbff;
+        --card: #fff;
+        --text: #07203a;
+        --gradient-start: #e6f7ff;
+        --gradient-end: #f6fbff;
+      }
+
+      .card {
+        background: rgba(255,255,255,0.8);
+        box-shadow: 0 20px 40px rgba(2,6,23,0.1);
+      }
+
+      .btn {
+        background: rgba(6,182,212,0.1);
+      }
+
+      .btn:hover {
+        background: rgba(6,182,212,0.15);
+      }
+
+      .icon {
+        background: rgba(6,182,212,0.15);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card" dir="rtl" lang="ar">
+    <div class="logo" style="background: transparent;">
+      <!-- Using local white-logo.png from project root -->
+      <img src="white-logo.png" alt="شعار شركة الجديد" style="max-width: 100%; max-height: 100%; object-fit: contain; display: block;">
+    </div>
+    <h1>تابعنا — شركة الجديد</h1>
+    <p>تواصل معنا عبر منصات التواصل الاجتماعي</p>
+
+    <div class="links">
+      <!-- غيّر href إلى روابط حساباتكم الحقيقية -->
+      <a class="btn" href="https://www.facebook.com/Aljadeed.co" target="_blank" rel="noopener">
+        <span class="icon"><i class="fab fa-facebook-f"></i></span>
+        فيسبوك
+      </a>
+
+      <a class="btn" href="https://www.instagram.com/aljadeed.co/" target="_blank" rel="noopener">
+        <span class="icon"><i class="fab fa-instagram"></i></span>
+        إنستغرام
+      </a>
+
+      <a class="btn" href="https://www.jadeed.iq/" target="_blank" rel="noopener">
+        <span class="icon"><i class="fas fa-globe"></i></span>
+        الموقع الإلكتروني
+      </a>
+
+      <a class="btn" href="https://www.linkedin.com/company/aljadeedco/" target="_blank" rel="noopener">
+        <span class="icon"><i class="fab fa-linkedin-in"></i></span>
+        لينكدإن
+      </a>
+
+      
+
+      <a class="btn" href="https://wa.me/9647718200500" target="_blank" rel="noopener">
+        <span class="icon"><i class="fab fa-whatsapp"></i></span>
+        واتساب
+      </a>
+    </div>
+
+    <footer>
+      <div class="contact-info" style="margin-bottom: 15px; font-size: 15px; display: flex; gap: 20px; justify-content: center; align-items: center;">
+        <p style="margin: 5px 0;"> 07718200500 <i class="fas fa-phone" style="color: var(--accent); margin-left: 5px;"> </i>  </p>
+        <p style="margin: 5px 0;">info@jadeed.iq <i class="fas fa-envelope" style="color: var(--accent); margin-left: 5px;"></i> </p>
+      </div>
+      <div>© شركة الجديد — جميع الحقوق محفوظة ٢٠٢٥</div>
+    </footer>
+  </div>
+</body>
+</html>
